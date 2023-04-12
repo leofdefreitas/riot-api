@@ -1,22 +1,8 @@
-import express from "express";
-import { Request, Response, NextFunction } from "express";
-import { test } from "./routes/index";
+import createApp from "./app"
+const logger = require("./logger");
 
-if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
-}
+const app = createApp();
+const PORT = process.env.PORT || 3000;
 
-const app = express();
-const PORT = process.env.PORT || 1234;
-
-
-function logger(req: Request, res: Response, next: NextFunction) {
-    console.log(`[${Date.now()}] ${req.method} ${req.url}`);
-    next();
-}
-
-app.use(logger);
-app.use(express.json());
-app.use("/test", test);
-
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+app.listen(PORT, () => logger.info(`server running on port ${PORT}`));
+logger.debug("teste");

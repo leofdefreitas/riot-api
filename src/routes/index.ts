@@ -1,2 +1,2 @@
-export const test = require("./test.ts");
+export const tryout = require("./tryout.ts");
 
