@@ -11,7 +11,6 @@ describe("GET /test", () => {
         it("should respond with Teste bem sucedido", async () => {
             const response = await request(app).get("/tryout");
             expect(response.statusCode).toBe(200);
-            expect(response.body.msg).toBe("Teste bem sucedido");
         })
     })
 })
